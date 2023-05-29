@@ -36,7 +36,7 @@ export default function Home() {
     <head>
       <title></title>
       <meta name="description" content=""></meta>
-      <link rel="icon" href="../../public/avatar.ico" />
+      <link rel="icon" href="../../public/favicon.ico" />
     </head>
 
       <div className='bg-[#420fe7]/95 px-10 dark:bg-gray-900'>
