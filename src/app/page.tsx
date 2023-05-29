@@ -34,11 +34,7 @@ export default function Home() {
   })
   return (
    <div className={darkMode ? 'dark' : ''}>
-    <head>
-      <title></title>
-      <meta name="description" content=""></meta>
-     
-    </head>
+   
 
       <div className='bg-[#420fe7]/95 px-10 dark:bg-gray-900'>
         <section className='min-h-screen'>
