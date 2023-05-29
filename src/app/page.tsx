@@ -23,6 +23,7 @@ import Adunit from '../../public/adunit.png'
 import zuddl from '../../public/zuddl.png'
 import consulting from '../../public/consulting.png'
 import {useState} from 'react'
+import favIcon from '../../public/favicon.ico'
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false)
@@ -36,12 +37,13 @@ export default function Home() {
     <head>
       <title></title>
       <meta name="description" content=""></meta>
-      <link rel="icon" href="../../public/favicon.ico" />
+     
     </head>
 
       <div className='bg-[#420fe7]/95 px-10 dark:bg-gray-900'>
         <section className='min-h-screen'>
           <nav className='py-10 mb-12 flex justify-between'>
+            
             <h1 className='text-xl text-slate-200'><Image className="hover:animate-spin" src={navImage} width={128} alt="Pranav Kastury portfolio"/></h1>
             {/* <div className='absolute border border-[#333] rounded-full w-[100px] h-[100px] lg:h-[200px] lg:w-[200px] mt-52 animate-ping'/> */}
       {/* <div className='absolute border border-[#ffb800] rounded-full w-[150px] h-[150px] lg:h-[300px] lg:w-[300px] mt-52 animate-pulse'/> */}
