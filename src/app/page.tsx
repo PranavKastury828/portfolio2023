@@ -1,6 +1,7 @@
 "use client";
 import "./globals.css";
 import React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import {
@@ -29,7 +30,6 @@ import MutualMobile from "../../public/MutualMobile.png";
 import Adunit from "../../public/adunit.png";
 import zuddl from "../../public/zuddl.png";
 import consulting from "../../public/consulting.png";
-import { useState } from "react";
 import ButtonHeader from "./ButtonHeader";
 import favIcon from "../../public/favicon.ico";
 
@@ -41,9 +41,7 @@ export default function Home() {
     loop: true,
     delaySpeed: 2000,
   });
-  const handleButtonClick = () => {
-    setContent("New content on button click");
-  };
+
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="bg-[#420fe7]/95 px-10 dark:bg-gray-900">
@@ -66,14 +64,14 @@ export default function Home() {
                   className="cursor-pointer text-2xl text-slate-200"
                 />
               </li>
-              <ButtonHeader onClick={handleButtonClick} label="Click Me" />
+
               <li>
                 <a
                   className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
                   href="https://drive.google.com/file/d/1shV_qe-bI5UiPEc2ge6R4MVmCNfk0-6z/view?usp=sharing"
                   target="_blank"
                 >
-                  {content}
+                  Resume
                 </a>
               </li>
             </ul>
