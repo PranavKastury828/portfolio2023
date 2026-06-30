@@ -54,9 +54,3 @@ The copy follows a few rules, on purpose:
 - No em-dashes anywhere. Commas, periods, and parentheses do the work.
 - Near-zero emoji. One personal touch lands harder than a wall of icons.
 - Pre-2023 portfolio cadence. Warm, plainspoken, a little understated.
-
-## Roadmap
-
-- [ ] Selected work, as commit-style entries
-- [ ] Writing, powered by Sanity, with the same block cursor as the editor caret
-- [ ] A footer easter egg
