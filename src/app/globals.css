@@ -1,21 +1,128 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+    /* Light terminal (paper) */
+    --bg: 244 245 243;
+    --surface: 255 255 255;
+    --border: 214 220 213;
+    --text: 20 30 22;
+    --muted: 90 102 90;
+    --accent: 21 128 61;
+    --accent-2: 77 124 15;
 }
 
-@font-face {
-    font-family: "burtons", sans-serif;
-    src: url("../../public/Burtons.otf");
+.dark {
+    /* Phosphor CRT: near-black with a faint green cast */
+    --bg: 10 13 10;
+    --surface: 17 21 17;
+    --border: 31 38 31;
+    --text: 214 229 214;
+    --muted: 110 125 110;
+    --accent: 52 211 122;
+    --accent-2: 163 230 53;
 }
 
-.icon-style {
-    transition: all 0.4s ease-in-out;
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: rgb(var(--bg));
+        color: rgb(var(--text));
+        font-family: var(--font-mono), 'JetBrains Mono', monospace;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background-color: rgb(var(--accent) / 0.3);
+        color: rgb(var(--text));
+    }
+
+    h1, h2, h3, h4 {
+        font-family: var(--font-display), 'Space Mono', monospace;
+    }
 }
 
-.icon-style:hover {
-    color: #f7ab0a !important;
+@layer utilities {
+    .eyebrow {
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        color: rgb(var(--accent));
+    }
+
+    /* Prompt glyph used to head a section, like a shell prompt */
+    .prompt::before {
+        content: '\276F';
+        color: rgb(var(--accent));
+        margin-right: 0.6ch;
+    }
+
+    /* Thick blinking block cursor. Solid while typing, blinks when idle. */
+    .term-cursor {
+        display: inline-block;
+        width: 0.6ch;
+        height: 1.05em;
+        margin-left: 0.12ch;
+        vertical-align: -0.16em;
+        background-color: rgb(var(--accent));
+    }
+    .term-cursor--blink {
+        animation: term-blink 1.05s steps(1) infinite;
+    }
+    @keyframes term-blink {
+        0%, 50% { opacity: 1; }
+        50.01%, 100% { opacity: 0; }
+    }
+
+    /* Terminal window chrome dots */
+    .term-dot {
+        width: 0.7rem;
+        height: 0.7rem;
+        border-radius: 9999px;
+    }
+
+    /* Faint CRT scanlines (the one ambient risk; kept very low) */
+    .scanlines::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgb(var(--accent) / 0.04) 0px,
+            rgb(var(--accent) / 0.04) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+        opacity: 0.5;
+        mix-blend-mode: screen;
+    }
+
+    /* Film grain, generated via SVG turbulence (no asset download) */
+    .grain::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .term-cursor--blink {
+        animation: none;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
 }
