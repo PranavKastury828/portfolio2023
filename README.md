@@ -1,34 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# pranav@kastury:~/portfolio
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```
+❯ whoami
+Pranav Kastury, founding engineer.
+A single page that reads like a terminal session.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+My personal site, rebuilt from the ground up as a single-page app with a phosphor-CRT terminal aesthetic. Monospace throughout, dark first, one green accent, and a headline that types itself.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Next.js** (App Router) and **TypeScript**
+- **Tailwind CSS** with CSS-variable design tokens
+- **next-themes** for the light and dark toggle
+- **Framer Motion** for scroll reveals, **Lenis** for smooth scroll
+- **Phosphor Icons** for the few glyphs that earn their place
+- **Space Mono** (display) and **JetBrains Mono** (everything else), self-hosted via `next/font`
 
-## Learn More
+## Run it
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev -- -p 3001
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then open `http://localhost:3001`. Swap the port for any you like.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm run build   # production build
+npm start       # serve the build
+```
 
-## Deploy on Vercel
+## How it is built
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The whole page is one centered terminal session. Each section is headed by a shell command that names what it does, so the structure carries meaning rather than decorating.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+❯ whoami              the typed hero, with a thick blinking block cursor
+❯ cat about.txt       who I am, in plain words
+❯ cat stack.json      the stack, rendered as real JSON
+❯ ls -la ~/experience where I have worked
+❯ ./contact.sh        say hello
+```
+
+Design notes and the full system live in [PORTFOLIO_DESIGN_SYSTEM.md](../PORTFOLIO_DESIGN_SYSTEM.md).
+
+## Writing style
+
+The copy follows a few rules, on purpose:
+
+- Concise and free flowing. Short, confident lines over buzzword stacks.
+- First person and human. The voice is "what I am so far," never a sales pitch.
+- No em-dashes anywhere. Commas, periods, and parentheses do the work.
+- Near-zero emoji. One personal touch lands harder than a wall of icons.
+- Pre-2023 portfolio cadence. Warm, plainspoken, a little understated.
+
+## Roadmap
+
+- [ ] Selected work, as commit-style entries
+- [ ] Writing, powered by Sanity, with the same block cursor as the editor caret
+- [ ] A footer easter egg
